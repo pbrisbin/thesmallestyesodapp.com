@@ -9,5 +9,6 @@ rsync -avz -e ssh --exclude '.*'    \
 
 ssh patrick@thesmallestyesodapp.com '
   kill -9 $(pgrep site); cd ./smallest &&
-  bash -c "nohup ./site &>/dev/null </dev/null &"
+  bash -c "nohup ./site &>/dev/null </dev/null &" &&
+  sleep 3
 '
