@@ -2,7 +2,8 @@
 
 ghc --make -o site site.hs
 
-rsync -avz -e ssh --exclude '*.o'   \
+rsync -avz -e ssh --exclude '.*'    \
+                  --exclude '*.o'   \
                   --exclude '*.hi'  \
                   --exclude '*.aes' ../smallest patrick@thesmallestyesodapp.com:~/
 
