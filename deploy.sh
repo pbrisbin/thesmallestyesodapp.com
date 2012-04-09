@@ -7,4 +7,7 @@ rsync -avz -e ssh --exclude '.*'    \
                   --exclude '*.hi'  \
                   --exclude '*.aes' ../smallest patrick@thesmallestyesodapp.com:~/
 
-ssh patrick@thesmallestyesodapp.com 'kill -9 $(pgrep site); cd ./smallest && ./site &'
+ssh patrick@thesmallestyesodapp.com '
+  kill -9 $(pgrep site); cd ./smallest &&
+  bash -c "nohup ./site &>/dev/null </dev/null &"
+'
