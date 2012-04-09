@@ -17,7 +17,7 @@ instance Yesod () where defaultLayout w = (\c -> hamletToRepHtml [hamlet|
         <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
     |]) =<< widgetToPageContent w
 
-getR = (liftIO $ readFile "./site.hs") >>= \c -> defaultLayout . toWidget
-     . formatHtmlBlock defaultFormatOpts { numberLines = True } $ highlightAs "haskell" c
+getR = (liftIO $ readFile "./site.hs") >>= defaultLayout . toWidget
+     . formatHtmlBlock defaultFormatOpts { numberLines = True } . highlightAs "haskell"
 
 main = run 3000 =<< toWaiApp ()
