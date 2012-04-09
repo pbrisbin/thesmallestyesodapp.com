@@ -14,7 +14,7 @@ instance Yesod () where defaultLayout w = (\c -> hamletToRepHtml [hamlet|
         <style>#{preEscapedString $ styleToCss pygments}
         <h3>I am the smallest yesod app!
         <p>Here is my source code:^{pageBody c}
-        <a href="https://gist.github.com/2322845">Make me smaller
+        <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
     |]) =<< widgetToPageContent w
 
 getR = (liftIO $ readFile "./site.hs") >>= \c -> defaultLayout . toWidget
