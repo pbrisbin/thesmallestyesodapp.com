@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 
-ghc --make -o site site.hs
+ghc -XQuasiQuotes \
+    -XTypeFamilies \
+    -XTemplateHaskell \
+    -XMultiParamTypeClasses \
+    --make -o site site.hs
 
 rsync -avz -e ssh --exclude '.*'    \
                   --exclude '*.o'   \

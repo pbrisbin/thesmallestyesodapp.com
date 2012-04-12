@@ -1,4 +1,3 @@
-{-# LANGUAGE QuasiQuotes, TypeFamilies, TemplateHaskell, MultiParamTypeClasses #-}
 module Main where
 import Yesod
 import Network.Wai.Handler.Warp (run)
