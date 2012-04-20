@@ -4,6 +4,7 @@ ghc -XQuasiQuotes \
     -XTypeFamilies \
     -XTemplateHaskell \
     -XMultiParamTypeClasses \
+    -XOverloadedStrings \
     --make -o site site.hs
 
 rsync -avz -e ssh --exclude '.*'    \

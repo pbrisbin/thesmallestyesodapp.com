@@ -6,17 +6,14 @@ import Text.Highlighting.Kate
 
 mkYesod "()" [parseRoutes| / R GET |]
 
-instance Yesod () where defaultLayout w = (\c -> hamletToRepHtml [hamlet|
-    $doctype 5
-    <html lang="en">
-        <title>The Smallest Yesod App
+instance Yesod ()
+
+getR = (\c -> defaultLayout $ setTitle "The Smallest Yesod App" >>
+    [whamlet|
         <style>#{preEscapedString $ styleToCss pygments}
         <h3>I am the smallest yesod app!
-        <p>Here is my source code:^{pageBody c}
+        <p>Here is my source code:#{c}
         <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
-    |]) =<< widgetToPageContent w
-
-getR = (liftIO $ readFile "./site.hs") >>= defaultLayout . toWidget
-     . formatHtmlBlock defaultFormatOpts { numberLines = True } . highlightAs "haskell"
+    |]) =<< (liftIO $ fmap (formatHtmlBlock defaultFormatOpts {numberLines = True} . highlightAs "haskell") $ readFile "./site.hs")
 
 main = run 3000 =<< toWaiApp ()
