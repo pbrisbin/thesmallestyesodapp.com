@@ -1,0 +1,3 @@
+[submodule "vm"]
+	path = vm
+	url = https://bitbucket.org/puffnfresh/vagrant-haskell-heroku.git
