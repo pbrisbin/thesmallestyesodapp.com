@@ -1,6 +1,7 @@
 module Main where
 import Yesod
 import Network.Wai.Handler.Warp (run)
+import System.Environment
 import Text.Blaze (preEscapedString)
 import Text.Highlighting.Kate
 
@@ -16,4 +17,4 @@ getR = (\c -> defaultLayout $ setTitle "The Smallest Yesod App" >>
         <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
     |]) =<< (liftIO $ fmap (formatHtmlBlock defaultFormatOpts {numberLines = True} . highlightAs "haskell") $ readFile "./site.hs")
 
-main = run 3000 =<< toWaiApp ()
+main = getEnv "PORT" >>= ( \p -> run (read p) =<< toWaiApp () )
