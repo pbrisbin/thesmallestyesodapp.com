@@ -1,18 +1,19 @@
 #!/bin/bash -e
 
-cabal clean
-cabal configure
-cabal build
+(
+  cd ./vm
+
+  vagrant up
+  vagrant ssh -c 'cd /app         &&
+                  cabal clean     &&
+                  cabal configure &&
+                  cabal build'
+)
 
 strip dist/build/site/site
 
-rsync -avz -e ssh --exclude '.*'    \
-                  --exclude '*.aes' \
-                  --exclude 'dist'  \
-                  ../smallest patrick@thesmallestyesodapp.com:~/
+cp dist/build/site/site .
 
-ssh patrick@thesmallestyesodapp.com '
-  kill -9 $(pgrep site); cd ./smallest &&
-  bash -c "nohup ./site &>/dev/null </dev/null &" &&
-  sleep 3
-'
+git commit site -m 'update binary'
+
+git push heroku master
