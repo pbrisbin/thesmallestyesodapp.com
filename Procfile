@@ -1,1 +1,1 @@
-web: ./site
+web: ./dist/build/site/site
