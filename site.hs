@@ -10,7 +10,7 @@ instance Yesod ()
 getR = (\c -> defaultLayout $ setTitle "The Smallest Yesod App" >>
     [whamlet|
         <style>#{preEscapedToMarkup $ styleToCss pygments}
-        <h3>I am the smallest yesod app!
+        <h3>I am The Smallest Yesod App!
         <p>Here is my source code:#{c}
         <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
     |]) =<< (liftIO $ fmap (formatHtmlBlock defaultFormatOpts {numberLines = True} . highlightAs "haskell") $ readFile "./site.hs")
