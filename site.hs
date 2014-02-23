@@ -6,9 +6,7 @@ import Text.Blaze (preEscapedToMarkup)
 import Text.Highlighting.Kate
 
 mkYesod "()" [parseRoutes| / R GET |]
-
 instance Yesod ()
-
 getR = (\c -> defaultLayout $ setTitle "The Smallest Yesod App" >>
     [whamlet|
         <style>#{preEscapedToMarkup $ styleToCss pygments}
@@ -16,5 +14,4 @@ getR = (\c -> defaultLayout $ setTitle "The Smallest Yesod App" >>
         <p>Here is my source code:#{c}
         <a href="https://github.com/pbrisbin/thesmallestyesodapp.com">Make me smaller
     |]) =<< (liftIO $ fmap (formatHtmlBlock defaultFormatOpts {numberLines = True} . highlightAs "haskell") $ readFile "./site.hs")
-
 main = getEnv "PORT" >>= ( \p -> run (read p) =<< toWaiApp () )
