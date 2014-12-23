@@ -1,0 +1,5 @@
+:set -XQuasiQuotes
+:set -XTypeFamilies
+:set -XTemplateHaskell
+:set -XMultiParamTypeClasses
+:set -XOverloadedStrings
