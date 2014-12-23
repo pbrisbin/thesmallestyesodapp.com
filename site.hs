@@ -2,7 +2,6 @@ module Main where
 import Yesod
 import Network.Wai.Handler.Warp (run)
 import System.Environment
-import Text.Blaze (preEscapedToMarkup)
 import Text.Highlighting.Kate
 
 mkYesod "()" [parseRoutes| / R GET |]
