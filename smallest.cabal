@@ -21,10 +21,12 @@ executable site
                  OverloadedStrings
 
   build-depends: base >= 4 && < 5
-               , yesod
-               , highlighting-kate
                , blaze-markup
+               , bytestring
+               , file-embed
+               , highlighting-kate
                , warp
+               , yesod
 
 source-repository head
   type:     git
