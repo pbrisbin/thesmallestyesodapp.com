@@ -4,7 +4,7 @@ license:       GPL
 author:        Patrick Brisbin
 maintainer:    Patrick Brisbin
 synopsis:      Smallest yesod site ever
-description:   Smallets yesod site ever
+description:   Smallest yesod site ever
 category:      Web
 stability:     Experimental
 cabal-version: >= 1.6
@@ -20,11 +20,11 @@ executable site
                  MultiParamTypeClasses
                  OverloadedStrings
 
-  build-depends: base              >= 4   && < 5
-               , yesod             >= 1.4 && < 1.5
-               , highlighting-kate >= 0.5 && < 0.6
-               , blaze-markup      >= 0.5 && < 0.7
-               , warp              >= 3.0 && < 3.1
+  build-depends: base >= 4 && < 5
+               , yesod
+               , highlighting-kate
+               , blaze-markup
+               , warp
 
 source-repository head
   type:     git
